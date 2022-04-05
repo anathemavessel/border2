@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>3.4 Interacción dinámica JavaScript/HTML/CSS - 3/3</title>
+</head>
+<body>   
+    <div class="d-flex justify-content-center py-5"> <!-- titulo -->
+        <h2 class="fw-bold">Online Border Radius Generator</h2>
+    </div>
+    <div> <!-- Graficos -->
+        <div class="d-flex justify-content-around align-items-end"> <!-- superior -->
+            <div class="BSD d-flex flex-column"> <!-- burbuja -->
+                <div class="d-flex justify-content-around">
+                    <input id="inputSI" type="text" class="text-center txtInput" value="0" onkeydown="submitSI()">
+                </div>
+                <div class="d-flex justify-content-around">
+                    <input id="rangeSI" class="rangeB" type="range" min="0" max="40" value="0" step="1">
+                </div>
+                <div class="form-check rangeB d-flex justify-content-center">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">All the same</label>
+                </div>
+            </div>
+            <div class="BSI d-flex flex-column">  <!-- burfbuja -->
+                <div class="d-flex justify-content-around">
+                    <input id="inputSD" type="text" class="text-center txtInput" value="0" onkeydown="submitSD()">
+                </div>
+                <div class="d-flex justify-content-around">
+                    <input id="rangeSD" class="rangeB" type="range" min="0" max="40" value="0" step="1">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center flex-column"> <!-- medio -->
+            <!-- cuadro de texto -->
+            <div class="d-flex justify-content-around">
+                <textarea id="txtArea" class="txtArea" rows="15" cols="50"></textarea>
+            </div>
+        </div>
+        <div class="d-flex justify-content-around"> <!-- inferior -->
+            <div class="BID d-flex flex-column"> <!-- burbuja -->
+                <div class="d-flex justify-content-around">
+                    <input id="inputII" type="text" class="text-center txtInput" value="0" onkeydown="submitII()">
+                </div>
+                <div class="d-flex justify-content-around">
+                    <input id="rangeII" class="rangeB" type="range" min="0" max="40" value="0" step="1">
+                </div>
+            </div>
+            <div class="BII d-flex flex-column"> <!-- burbuja -->
+                <div class="d-flex justify-content-around">
+                    <input id="inputID" type="text" class="text-center txtInput" value="0" onkeydown="submitID()">
+                </div>
+                <div class="d-flex justify-content-around">
+                    <input id="rangeID" class="rangeB" type="range" min="0" max="40" value="0" step="1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="my-4"> <!-- ajustes -->
+        <div class="sectionW d-inline"> <!-- width -->
+            <span class="titleSetting">Width:</span>
+            <button id="btnResetW" class="mx-5 btnReset">1</button>
+            <div class="inputDiv">
+                <div class="etiqueta"></div>
+                <input type="range" class="SRTag" value="5" min="0" max="30" autocomplete="off" id="input1">
+            </div>
+        </div>
+        <div class="sectionW"> <!-- style -->
+            <span class="titleSetting">Style:</span>
+            <a href=""><div id="btnSolid" class="d-inline px-2 btnStyle btnSolid">solid</div></a>
+            <a href=""><div id="btnDotted" class="d-inline px-2 btnStyle btnDotted">dotted</div></a>
+            <a href=""><div id="btnDashed" class="d-inline px-2 btnStyle btnDashed">dashed</div></a>
+            <a href=""><div id="btnDouble" class="d-inline px-2 btnStyle btnDouble">double</div></a>
+            <a href=""><div id="btnGroove" class="d-inline px-2 btnStyle btnGroove">groove</div></a>
+            <a href=""><div id="btnRidge" class="d-inline px-2 btnStyle btnRidge">ridge</div></a>
+            <a href=""><div id="btnInset" class="d-inline px-2 btnStyle btnInset">inset</div></a>
+            <a href=""><div id="btnOutset" class="d-inline px-2 btnStyle btnOutset">outset</div></a>
+            <a href=""><div id="btnHidden" class="d-inline px-2 btnStyle btnHidden">hidden</div></a>
+            <a href=""><div id="btnNone" class="d-inline px-2 btnStyle btnNone">none</div></a>
+        </div>
+        <div class="sectionW"> <!-- color -->
+            <span class="titleSetting">Color:</span>
+            <input id="inputColor" type="text" class="inputColor text-center mx-5" value="1C6EA4">
+            <button id="btnResetC" class="mx-5 btnReset">1</button>
+            <div class="inputDiv">
+                <div class="etiqueta2"></div>
+                <input type="range" class="SRTag" step="0.01" value="1" min="0" max="1" autocomplete="off" id="valorColor">
+            </div>
+        </div>
+        <div class="sectionW"> <!-- position -->
+            <span class="titleSetting">Position:</span>
+            <a href=""><div class="d-inline px-4 btnStyle btnSolid">All</div></a>
+            <a href=""><div class="d-inline px-4 mx-2 btnStyle bTop">Top</div></a>
+            <a href=""><div class="d-inline px-4 mx-2 btnStyle bRight">Right</div></a>
+            <a href=""><div class="d-inline px-4 mx-2 btnStyle bBotton">Botton</div></a>
+            <a href=""><div class="d-inline px-4 mx-2 btnStyle bLeft">Left</div></a>
+        </div>
+    </div>
+    <!-- JAVASCRIPT -->
+    <script src="JS/main.js"></script>
+</body>
+</html>
